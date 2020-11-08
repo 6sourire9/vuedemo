@@ -1,18 +1,20 @@
 <template>
-  <!--  <img alt="Vue logo" src="./assets/logo.png">-->
   <!--  <HelloWorld msg='Welcome to Your Vue.js App'/>-->
   <!--  <HelloWorld>Welcome to Your Vue.js</HelloWorld>-->
-  <TodoList />
+  <!--  <TodoList />-->
+  <Home />
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-import TodoList from "@/components/todolist/TodoList";
+// import TodoList from "@/components/todolist/TodoList";
+import Home from "./pages/Home";
 
 export default {
   name: "App",
   components: {
-    TodoList
+    Home
+    // TodoList
     // HelloWorld
   },
   filters: {
@@ -25,4 +27,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+@import "assets/css/base.css";
+</style>
