@@ -1,4 +1,5 @@
 <template>
+  <!--    阻止默认事件提交-->
   <form @submit.prevent="addTodo">
     <input type="text" v-model="todoText" placeholder="new todo" />
   </form>
