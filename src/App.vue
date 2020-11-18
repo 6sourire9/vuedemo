@@ -2,23 +2,27 @@
   <!--  <HelloWorld msg='Welcome to Your Vue.js App'/>-->
   <!--  <HelloWorld>Welcome to Your Vue.js</HelloWorld>-->
   <!--  <TodoList />-->
-  <Home />
+  <!--  <Home />-->
+  <RouterView />
   <TabBar />
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 // import TodoList from "@/components/todolist/TodoList";
-import Home from "./pages/Home";
+// import Home from "./pages/Home";
 import TabBar from "./components/tabbar/TabBar";
 
 export default {
   name: "App",
   components: {
-    TabBar,
-    Home
+    TabBar
+    // Home
     // TodoList
     // HelloWorld
+  },
+  created: function() {
+    this.$router.push("/");
   },
   filters: {
     capitalize: function(value) {

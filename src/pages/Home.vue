@@ -1,5 +1,5 @@
 <template>
-  <NavBar class="navHome"><template v-slot:center>购物街</template></NavBar>
+  <NavBar class="navHome"><template>购物街</template></NavBar>
 </template>
 
 <script>

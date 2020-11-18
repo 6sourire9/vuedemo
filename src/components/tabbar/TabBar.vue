@@ -1,9 +1,16 @@
 <template>
   <div class="tabBarBox">
-    <div class="smallBox" v-for="i in tabData" :key="i.id">
-      <img />
+    <RouterLink
+      class="smallBox"
+      v-for="i in tabData"
+      active-class="selected"
+      :key="i.id"
+      :to="i.path"
+      @click="selectId = i.id"
+    >
+      <!--      <img />-->
       <span>{{ i.name }}</span>
-    </div>
+    </RouterLink>
   </div>
 </template>
 
@@ -15,21 +22,26 @@ export default {
       tabData: [
         {
           id: 1,
-          name: "首页"
+          name: "首页",
+          path: "/home"
         },
         {
           id: 2,
-          name: "购物车"
+          name: "购物车",
+          path: "/shoppingCart"
         },
         {
           id: 3,
-          name: "我的"
+          name: "类别",
+          path: "/category"
         },
         {
           id: 4,
-          name: "商品"
+          name: "我的",
+          path: "/myInfo"
         }
-      ]
+      ],
+      selectId: 1
     };
   }
 };
@@ -44,6 +56,8 @@ export default {
   justify-content: space-around;
 }
 .smallBox {
-  /*display: inline-block;*/
+}
+.selected {
+  color: red;
 }
 </style>
