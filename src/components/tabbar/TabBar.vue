@@ -24,16 +24,15 @@ export default {
           id: 1,
           name: "首页",
           path: "/home"
-        },
-        {
+        },{
           id: 2,
-          name: "购物车",
-          path: "/shoppingCart"
+          name: "分类",
+          path: "/category"
         },
         {
           id: 3,
-          name: "类别",
-          path: "/category"
+          name: "购物车",
+          path: "/shoppingCart"
         },
         {
           id: 4,
@@ -54,10 +53,15 @@ export default {
   width: 100%;
   display: flex;
   justify-content: space-around;
+  height: 30px;
+  line-height: 30px;
+  box-shadow: 0 0 10px gray;
 }
 .smallBox {
+  text-decoration: none;
+  color: black;
 }
 .selected {
-  color: red;
+  color: #ff8a9d;
 }
 </style>

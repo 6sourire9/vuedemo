@@ -1,10 +1,10 @@
 <template>
   <div class="nav">
-    <div class="left">
-      <slot name="left"></slot>
+    <div class="left" v-if="!noBack">
+      <i class="el-icon-back" @click="goBack"></i>
     </div>
     <div class="center">
-      <slot name="center"></slot>
+      {{title}}
     </div>
     <div class="right">
       <slot name="right"></slot>
@@ -13,13 +13,42 @@
 </template>
 
 <script>
+import {useRouter} from "vue-router";
+
 export default {
-  name: "NavBar"
+    name: "NavBar",
+    props:{
+        title:{
+          type:String,
+          default:'',
+        },
+        back:{
+            type:String,
+            default:''
+        },
+        noBack:{
+            type:Boolean,
+            default:false
+        }
+    },
+    setup(props){
+      const router=useRouter();
+      const goBack=()=>{
+        if(!props.back){
+          router.go(-1);
+        }else{
+          router.push('/home')
+        }
+      };
+      return {goBack};
+    }
 };
 </script>
 
 <style scoped>
 .nav {
+  background-color: #ff8a9d;
+  color: white;
   display: flex;
   height: 44px;
   line-height: 44px;

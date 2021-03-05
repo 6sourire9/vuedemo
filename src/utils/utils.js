@@ -64,3 +64,8 @@ export function getBrowserInfo() {
     return agent.match(regStr_chrome);
   }
 }
+
+export function arrayMove(arr, form, to) {
+  const item = arr.splice(form, 1);
+  arr.splice(to, 0, item);
+}

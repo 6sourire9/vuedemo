@@ -1,8 +1,12 @@
-<template> </template>
+<template>
+  <NavBar><template #center>购物车</template></NavBar>
+</template>
 
 <script>
+import NavBar from "@/components/navbar/NavBar";
 export default {
-  name: "ShoppingCart"
+  name: "ShoppingCart",
+  components: {NavBar}
 };
 </script>
 
