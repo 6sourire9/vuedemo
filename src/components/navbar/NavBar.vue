@@ -1,15 +1,15 @@
 <template>
-  <div class="nav">
-    <div class="left" v-if="!noBack">
-      <i class="el-icon-back" @click="goBack"></i>
-    </div>
-    <div class="center">
+  <el-row class="nav">
+    <el-col :span="8">
+      <i v-if="!noBack" class="el-icon-back" @click="goBack"></i>
+    </el-col>
+    <el-col :span="8" class="center">
       {{title}}
-    </div>
-    <div class="right">
-      <slot name="right"></slot>
-    </div>
-  </div>
+    </el-col>
+    <el-col :span="8">
+        <slot name="right"></slot>
+    </el-col>
+  </el-row>
 </template>
 
 <script>
@@ -46,19 +46,15 @@ export default {
 </script>
 
 <style scoped>
-.nav {
-  background-color: #ff8a9d;
-  color: white;
-  display: flex;
-  height: 44px;
-  line-height: 44px;
-  text-align: center;
-}
-.left,
-.right {
-  width: 60px;
-}
-.center {
-  flex: 1;
-}
+  .nav {
+    background-color: #ff8a9d;
+    color: white;
+    display: flex;
+    height: 44px;
+    line-height: 44px;
+    padding: 0px 8px;
+  }
+  .center{
+    text-align: center;
+  }
 </style>
