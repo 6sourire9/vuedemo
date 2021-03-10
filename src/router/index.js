@@ -14,9 +14,9 @@ const router = createRouter({
       redirect: "/home"
     },
     {
-      path:'/login',
-      name:'login',
-      component:()=>import('@/pages/LoginPage')
+      path: "/login",
+      name: "login",
+      component: () => import("@/pages/LoginPage")
     },
     {
       path: "/home",

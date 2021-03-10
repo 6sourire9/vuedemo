@@ -70,7 +70,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .logo {
   width: 120px;
   height: 120px;

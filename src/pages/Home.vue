@@ -1,5 +1,5 @@
 <template>
-  <NavBar class="navHome"><template #center>购物街</template></NavBar>
+  <NavBar class="navHome" title="购物街"></NavBar>
   <div class="block">
     <el-carousel height="150px">
       <el-carousel-item v-for="item in 4" :key="item">
@@ -7,22 +7,27 @@
       </el-carousel-item>
     </el-carousel>
   </div>
-  <el-tabs v-model="activeName" @tab-click="handleClick">
+  <div>
+    <header class="good-header">新品上线</header>
+  </div>
+
+  <!--<el-tabs v-model="activeName" @tab-click="handleClick">
     <el-tab-pane label="流行" name="first">流行</el-tab-pane>
     <el-tab-pane label="新款" name="second">新款</el-tab-pane>
     <el-tab-pane label="精选" name="third">精选</el-tab-pane>
-  </el-tabs>
-
+  </el-tabs>-->
+  <tab-bar />
 </template>
 
 <script>
 import NavBar from "../components/navbar/NavBar";
+import TabBar from "@/components/tabbar/TabBar";
 export default {
   name: "Home",
-  components: { NavBar },
+  components: { TabBar, NavBar },
   data() {
     return {
-      activeName: 'second'
+      activeName: "second"
     };
   },
   methods: {
@@ -33,7 +38,8 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="less">
+@import "../components/common/style/base";
 .navHome {
   background-color: #ff8a9d;
   color: white;
@@ -50,7 +56,16 @@ export default {
   background-color: #99a9bf;
 }
 
-.el-carousel__item:nth-child(2n+1) {
+.el-carousel__item:nth-child(2n + 1) {
   background-color: #d3dce6;
+}
+.good-header {
+  background: #f9f9f9;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  color: @primary;
+  font-size: 16px;
+  font-weight: 500;
 }
 </style>

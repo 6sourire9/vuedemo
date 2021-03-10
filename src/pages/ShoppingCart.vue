@@ -6,7 +6,7 @@
 import NavBar from "@/components/navbar/NavBar";
 export default {
   name: "ShoppingCart",
-  components: {NavBar}
+  components: { NavBar }
 };
 </script>
 

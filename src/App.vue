@@ -3,17 +3,17 @@
   <!--  <HelloWorld>Welcome to Your Vue.js</HelloWorld>-->
   <!--  <TodoList />-->
   <!--  <Home />-->
-    <router-view v-slot="{Component}">
-        <component :is="Component"/>
-    </router-view>
-<!--  <router-view />-->
+  <router-view v-slot="{ Component }">
+    <component :is="Component" />
+  </router-view>
+  <!--  <router-view />-->
   <!--<van-tabbar route>
     <van-tabbar-item replace to="/home" icon="home-o">首页</van-tabbar-item>
     <van-tabbar-item replace to="/shoppingCart" icon="home-o"
       >购物车</van-tabbar-item
     >
   </van-tabbar>-->
-<!--  <TabBar />-->
+  <!--  <TabBar />-->
   <!--  <h1>aaa</h1>-->
   <!--  <VuexTest />-->
 </template>
