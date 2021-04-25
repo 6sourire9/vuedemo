@@ -36,8 +36,13 @@
         </van-swipe-cell>
       </van-checkbox-group>
     </div>
-    <van-submit-bar :price="total" button-text="结算" @submit="handleSubmit">
-      <van-checkbox @click="handleCheckAll" v-model:checked="checkAll"
+    <van-submit-bar
+      :price="total * 100"
+      button-text="结算"
+      @submit="handleSubmit"
+      class="submit-all"
+    >
+      <van-checkbox @click="handleCheckAll" :checked="checkAll"
         >全选</van-checkbox
       >
     </van-submit-bar>
@@ -47,35 +52,43 @@
       <van-button type="primary" @click="goTo">前往选购</van-button>
     </van-empty>
   </div>
-  <tab-bar />
+  <!--  <tab-bar />-->
 </template>
 
 <script>
-import { reactive, toRefs, computed } from "vue";
+import { reactive, toRefs, computed, onMounted } from "vue";
 import NavBar from "@/components/navbar/NavBar";
 import { useRouter } from "vue-router";
-import TabBar from "@/components/tabbar/TabBar";
+import { useStore } from "vuex";
+// import TabBar from "@/components/tabbar/TabBar";
 export default {
   name: "ShoppingCart",
-  components: { TabBar, NavBar },
+  components: { NavBar },
   setup() {
     const router = useRouter();
+    const store = useStore();
     const state = reactive({
-      list: [{ id: 1, title: "手机", count: 1, price: 1000 }],
+      list: [
+        { id: 1, title: "手机", count: 1, price: 1000 },
+        { id: 2, title: "电脑", count: 1, price: 2000 }
+      ],
       checklist: [],
-      checkAll: true,
+      checkAll: false,
       total: 0
+    });
+    onMounted(() => {
+      store.commit("addCount", state.checklist.length || 0);
     });
     const goTo = () => {
       router.push("/home");
     };
-    console.log(1, state.checklist);
     const total = computed(() => {
       let sum = 0;
       let lists = state.list.filter(i => state.checklist.includes(i.id));
       lists.forEach(i => {
         sum += i.count * i.price;
       });
+      store.commit("addCount", lists.length || 0);
       return sum;
     });
     function handleSubmit() {}
@@ -87,11 +100,18 @@ export default {
       }
     }
     function handleDelete(id) {
-      console.log(id);
+      state.list = state.list.filter(i => i.id !== id);
     }
+
+    const handleCount = () => {
+      store.commit("addCount", state.checklist.length || 0);
+      // store.dispatch("updateCount", state.list.length);
+    };
+
     return {
       ...toRefs(state),
       goTo,
+      handleCount,
       handleSubmit,
       handleCheckAll,
       handleDelete,
@@ -111,5 +131,8 @@ export default {
     display: flex;
     justify-content: space-between;
   }
+}
+.submit-all {
+  margin-bottom: 50px;
 }
 </style>

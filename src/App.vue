@@ -3,9 +3,27 @@
   <!--  <HelloWorld>Welcome to Your Vue.js</HelloWorld>-->
   <!--  <TodoList />-->
   <!--  <Home />-->
-  <router-view v-slot="{ Component }">
+  <router-view />
+  <van-tabbar route>
+    <van-tabbar-item replace to="/home" icon="home-o">首页</van-tabbar-item>
+    <van-tabbar-item replace to="/category" icon="apps-o">
+      分类
+    </van-tabbar-item>
+    <van-tabbar-item
+      :badge="!!num ? num : ''"
+      replace
+      to="/shoppingCart"
+      icon="shopping-cart-o"
+    >
+      购物车
+    </van-tabbar-item>
+    <van-tabbar-item replace to="/myInfo" icon="manager-o">
+      我的
+    </van-tabbar-item>
+  </van-tabbar>
+  <!--<router-view v-slot="{ Component }">
     <component :is="Component" />
-  </router-view>
+  </router-view>-->
   <!--  <router-view />-->
   <!--<van-tabbar route>
     <van-tabbar-item replace to="/home" icon="home-o">首页</van-tabbar-item>
@@ -28,6 +46,9 @@
 // import { useRouter, useRoute } from "vue-router";
 // import { getCurrentInstance } from "vue";
 // import VuexTest from "@/pages/VuexTest";
+import { computed } from "vue";
+import { useStore } from "vuex";
+
 export default {
   name: "App",
   /*components: {
@@ -55,6 +76,11 @@ export default {
       router.replace({ name: "home" });
     };
     return { toHome };*/
+    const store = useStore();
+    const num = computed(() => {
+      return store.state.count;
+    });
+    return { num };
   },
   created: function() {
     // this.$router.push("/");

@@ -1,6 +1,24 @@
 <template>
   <div class="tabBarBox">
-    <RouterLink
+    <router-view />
+    <van-tabbar route>
+      <van-tabbar-item replace to="/home" icon="home-o">首页</van-tabbar-item>
+      <van-tabbar-item replace to="/category" icon="apps-o">
+        分类
+      </van-tabbar-item>
+      <van-tabbar-item
+        badge="1"
+        replace
+        to="/shoppingCart"
+        icon="shopping-cart-o"
+      >
+        购物车
+      </van-tabbar-item>
+      <van-tabbar-item replace to="/myInfo" icon="manager-o">
+        我的
+      </van-tabbar-item>
+    </van-tabbar>
+    <!-- <RouterLink
       class="smallBox"
       v-for="i in tabData"
       active-class="selected"
@@ -10,7 +28,7 @@
     >
       <i :class="i.icon" class="tab-icon"></i>
       <span>{{ i.name }}</span>
-    </RouterLink>
+    </RouterLink>-->
   </div>
 </template>
 
@@ -19,6 +37,7 @@ export default {
   name: "TabBar",
   data() {
     return {
+      num: 1,
       tabData: [
         {
           id: 1,
@@ -62,6 +81,7 @@ export default {
   /*line-height: 30px;*/
   box-shadow: 0 0 10px gray;
   padding: 8px 0;
+  z-index: 10;
 }
 .smallBox {
   text-decoration: none;

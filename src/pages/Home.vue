@@ -1,11 +1,17 @@
 <template>
   <NavBar class="navHome" title="购物街"></NavBar>
   <div class="block">
-    <el-carousel height="150px">
+    <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+      <van-swipe-item>1</van-swipe-item>
+      <van-swipe-item>2</van-swipe-item>
+      <van-swipe-item>3</van-swipe-item>
+      <van-swipe-item>4</van-swipe-item>
+    </van-swipe>
+    <!--<el-carousel height="150px">
       <el-carousel-item v-for="item in 4" :key="item">
         <h3 class="small">{{ item }}</h3>
       </el-carousel-item>
-    </el-carousel>
+    </el-carousel>-->
   </div>
   <div>
     <header class="good-header">新品上线</header>
@@ -16,15 +22,15 @@
     <el-tab-pane label="新款" name="second">新款</el-tab-pane>
     <el-tab-pane label="精选" name="third">精选</el-tab-pane>
   </el-tabs>-->
-  <tab-bar />
+  <!--  <tab-bar />-->
 </template>
 
 <script>
 import NavBar from "../components/navbar/NavBar";
-import TabBar from "@/components/tabbar/TabBar";
+// import TabBar from "@/components/tabbar/TabBar";
 export default {
   name: "Home",
-  components: { TabBar, NavBar },
+  components: { NavBar },
   data() {
     return {
       activeName: "second"
@@ -40,6 +46,13 @@ export default {
 
 <style scoped lang="less">
 @import "../components/common/style/base";
+.my-swipe .van-swipe-item {
+  color: #fff;
+  font-size: 20px;
+  line-height: 150px;
+  text-align: center;
+  background-color: #39a9ed;
+}
 .navHome {
   background-color: #ff8a9d;
   color: white;
